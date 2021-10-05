@@ -13,6 +13,8 @@ function Home () {
         const getData = async () => {
             setData(await api.getCreatures())
         }
+
+        getData()
     }, [])
 
     const mapItems = (item, index) => {
