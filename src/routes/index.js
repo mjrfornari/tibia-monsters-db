@@ -1,5 +1,5 @@
 import Home from '../pages/Home'
-import User from '../pages/User'
+import Creature from '../pages/Creature'
 
 export const routes = [
     {
@@ -9,7 +9,7 @@ export const routes = [
     },
     {
         path: 'creature',
-        component: User,
+        component: Creature,
         exact: true,
     },
 ]

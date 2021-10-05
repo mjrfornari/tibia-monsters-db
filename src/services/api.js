@@ -4,9 +4,23 @@ const api = axios.create({
     baseURL: 'http://localhost:5000',
 })
 
-api.test = () => {
+api.getCreatures = async () => {
     return new Promise(async (resolve, reject) => {
-        api.get('/zen')
+        return resolve([
+            {
+                id: 1,
+                name: 'Demon',
+                life: 8200,
+                exp: 6000,
+            },
+            {
+                id: 2,
+                name: 'Troll',
+                life: 50,
+                exp: 20,
+            },
+        ])
+        api.get('/creatures')
             .then(response => {
                 if (response.status === 200) resolve(response.data)
                 else reject(response.statusText)
@@ -15,9 +29,43 @@ api.test = () => {
     })
 }
 
-api.getUsers = async (since, setLastPage) => {
+api.getCreature = async id => {
     return new Promise(async (resolve, reject) => {
-        api.get('/users', { params: { since } })
+        return resolve({
+            id: 1,
+            name: 'Demon',
+            life: 8200,
+            exp: 6000,
+        })
+        api.get('/creatures/' + id)
+            .then(response => {
+                if (response.status === 200) resolve(response.data)
+                else reject(response.statusText)
+            })
+            .catch(error => reject(error))
+    })
+}
+
+api.addCreature = async creature => {
+    return new Promise(async (resolve, reject) => {
+        api.post('/create_creature', { data: creature })
+            .then(response => {
+                if (response.status === 200) resolve(response.data)
+                else reject(response.statusText)
+            })
+            .catch(error => reject(error))
+    })
+}
+
+api.updateCreature = async (login, page, setLastPage) => {
+    return new Promise(async (resolve, reject) => {
+        return resolve({
+            id: 1,
+            name: 'Demon',
+            life: 8200,
+            exp: 6000,
+        })
+        api.get('/users/' + login + '/repos', { params: { page } })
             .then(response => {
                 if (response?.headers?.link?.indexOf('next') === -1)
                     setLastPage(true)
@@ -28,30 +76,14 @@ api.getUsers = async (since, setLastPage) => {
     })
 }
 
-api.getCreatures = async () => {
+api.deleteCreature = async (login, page, setLastPage) => {
     return new Promise(async (resolve, reject) => {
-        api.get('/creatures')
-            .then(response => {
-                if (response.status === 200) resolve(response.data)
-                else reject(response.statusText)
-            })
-            .catch(error => reject(error))
-    })
-}
-
-api.getUser = async login => {
-    return new Promise(async (resolve, reject) => {
-        api.get('/users/' + login)
-            .then(response => {
-                if (response.status === 200) resolve(response.data)
-                else reject(response.statusText)
-            })
-            .catch(error => reject(error))
-    })
-}
-
-api.getUserRepos = async (login, page, setLastPage) => {
-    return new Promise(async (resolve, reject) => {
+        return resolve({
+            id: 1,
+            name: 'Demon',
+            life: 8200,
+            exp: 6000,
+        })
         api.get('/users/' + login + '/repos', { params: { page } })
             .then(response => {
                 if (response?.headers?.link?.indexOf('next') === -1)

@@ -5,11 +5,12 @@
 }
 
 .Home__users-list {
-    height: 70vh;
+    max-height: 70vh;
     overflow-y: auto;
     width: calc(100vw - 20px);
     max-width: 800px;
     align-self: center;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-height: 767px) {
@@ -26,7 +27,7 @@
     color: var(--color-primary);
     font-family: 'Source Code Pro', monospace;
     border: 1px solid var(--color-primary);
-    border-radius: 10px;
+    border-radius: 2px;
     margin: 10px;
 }
 
@@ -44,7 +45,7 @@
 
 .creature-item__avatar .avatar {
     height: 80px;
-    border-radius: 5px;
+    border-radius: 2px;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
         rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
@@ -56,10 +57,62 @@
     align-content: space-around;
     margin-left: 10px;
     height: 80px;
+    font-size: 1.4rem;
+    flex: 1;
+}
+
+.creature-item__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
+    margin-left: 10px;
+    height: 80px;
+    font-size: 1.4rem;
+}
+
+.creature-item__actions button {
+    color: var(--font-color);
+    background: var(--background-color);
+    border: 1px solid var(--color-primary);
+    border-radius: 2px;
+    padding: 10px;
+    width: 20vw;
+    max-width: 80px;
+    font-size: 0.9rem;
+    font-family: 'Fjalla One', sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.creature-item__actions button:first-of-type {
+    margin-bottom: 10px;
+}
+
+.Home__add-button {
+    color: var(--font-color);
+    background: var(--background-color);
+    border: 1px solid var(--color-primary);
+    border-radius: 2px;
+    padding: 10px;
+    width: 20vw;
+    max-width: 20vw;
+    font-size: 0.9rem;
+    font-family: 'Fjalla One', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.Home__button-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .random-joke {
     display: flex;
     flex: 1;
     justify-content: center;
+    margin-left: 40px;
+    margin-right: 40px;
 }

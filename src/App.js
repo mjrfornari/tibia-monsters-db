@@ -5,6 +5,7 @@ import ThemeToggler from './components/ThemeToggler'
 import { routes, fallbackRoute } from './routes'
 
 import './App.css'
+import './App.scss'
 
 function App () {
     const routeComponents = routes.map((route, key) => {
