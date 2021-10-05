@@ -48,7 +48,7 @@ api.getCreature = async id => {
 
 api.addCreature = async creature => {
     return new Promise(async (resolve, reject) => {
-        api.post('/create_creature', { data: creature })
+        api.post('/create_creature', creature)
             .then(response => {
                 if (response.status === 200) resolve(response.data)
                 else reject(response.statusText)
