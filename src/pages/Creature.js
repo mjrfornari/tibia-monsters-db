@@ -3,7 +3,6 @@ import { Icon } from 'react-icons-kit'
 import { save } from 'react-icons-kit/fa/save'
 import { undo2 } from 'react-icons-kit/icomoon/undo2'
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 
 import api from '../services/api'
 
@@ -32,7 +31,7 @@ function Creature () {
                 'Creature added',
                 'The creature has been added succesfully.',
                 'success'
-            )
+            ).then(value => window.history.push('/'))
         } else
             Swal.fire(
                 'Something went wrong',

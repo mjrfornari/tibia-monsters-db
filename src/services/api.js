@@ -6,20 +6,6 @@ const api = axios.create({
 
 api.getCreatures = async () => {
     return new Promise(async (resolve, reject) => {
-        return resolve([
-            {
-                id: 1,
-                name: 'Demon',
-                life: 8200,
-                exp: 6000,
-            },
-            {
-                id: 2,
-                name: 'Troll',
-                life: 50,
-                exp: 20,
-            },
-        ])
         api.get('/creatures')
             .then(response => {
                 if (response.status === 200) resolve(response.data)
