@@ -18,9 +18,6 @@ function Home () {
     useEffect(() => {
         const getData = async () => {
             setData(await api.getCreatures())
-            axios.get('https://api.chucknorris.io/jokes/random').then(res => {
-                setRandomJoke('"' + res.data.value + '" - NORRIS, Chuck.')
-            })
         }
 
         getData()
@@ -73,7 +70,6 @@ function Home () {
     return (
         <div className='page--content'>
             <div className='Home'>
-                <div className='random-joke'>{randomJoke}</div>
                 <h2>Creatures</h2>
                 <div className='Home__users-list'>
                     <ListGroup>{listedItems}</ListGroup>
