@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ListGroup, ListGroupItem } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import api from '../services/api'
 
@@ -8,10 +9,14 @@ import './styles/Home.css'
 
 function Home () {
     const [data, setData] = useState([])
+    const [randomJoke, setRandomJoke] = useState('')
 
     useEffect(() => {
         const getData = async () => {
             setData(await api.getCreatures())
+            axios.get('https://api.chucknorris.io/jokes/random').then(res => {
+                setRandomJoke(res.data.value)
+            })
         }
 
         getData()
@@ -48,6 +53,7 @@ function Home () {
     return (
         <div className='page--content'>
             <div className='Home'>
+                {randomJoke}
                 <h2>Creatures</h2>
                 <div className='Home__users-list'>
                     <ListGroup>{listedItems}</ListGroup>
