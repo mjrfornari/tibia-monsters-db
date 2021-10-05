@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://api.github.com',
+    baseURL: 'http://localhost:5000',
 })
 
 api.test = () => {
@@ -28,23 +28,14 @@ api.getUsers = async (since, setLastPage) => {
     })
 }
 
-api.getMonsters = async (since, setLastPage) => {
+api.getCreatures = async () => {
     return new Promise(async (resolve, reject) => {
-        // api.get('/users', { params: { since }}).then(response => {
-        //     if (response?.headers?.link?.indexOf("next") === -1) setLastPage(true)
-        //     if (response.status === 200) resolve(response.data)
-        //     else reject(response.statusText)
-        // }).catch((error) => reject(error))
-        resolve([
-            {
-                id: 1,
-                name: 'Demon',
-            },
-            {
-                id: 2,
-                name: 'Dragon',
-            },
-        ])
+        api.get('/monsters')
+            .then(response => {
+                if (response.status === 200) resolve(response.data)
+                else reject(response.statusText)
+            })
+            .catch(error => reject(error))
     })
 }
 

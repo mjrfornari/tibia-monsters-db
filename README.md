@@ -1,1 +1,1 @@
-# tibia-monsters-db
+# tibia-creatures-db

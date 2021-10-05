@@ -28,7 +28,7 @@ function App () {
                     >
                         Tibia
                     </a>{' '}
-                    Monsters DB
+                    Creatures DB
                 </h1>
                 <ThemeToggler />
             </div>

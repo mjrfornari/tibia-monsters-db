@@ -1,10 +1,10 @@
-.Monster {
+.Creature {
     background: var(--background-color);
     display: flex;
     flex-direction: column;
 }
 
-.Monster__user-data {
+.Creature__user-data {
     flex: 1;
     width: calc(100vw - 20px);
     max-width: 800px;
@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-.monster-data {
+.creature-data {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -32,12 +32,12 @@
 }
 
 @media screen and (max-width: 321px) {
-    .monster-data {
+    .creature-data {
         padding: 10px;
     }
 }
 
-.monster-data .avatar {
+.creature-data .avatar {
     max-width: 150px;
     min-width: 150px;
     border-radius: 5px;
@@ -47,7 +47,7 @@
     border-radius: 100%;
 }
 
-.Monster__user-data .backButton {
+.Creature__user-data .backButton {
     color: var(--color-secondary);
     background: var(--color-primary);
     border: none;
@@ -57,7 +57,7 @@
     max-width: 60px;
 }
 
-.Monster__show-repos-button {
+.Creature__show-repos-button {
     color: var(--color-secondary);
     background: var(--color-primary);
     border: none;
@@ -67,14 +67,14 @@
     margin: 10px;
 }
 
-.Monster__repos-list {
+.Creature__repos-list {
     flex: 1;
     max-height: 300px;
     overflow-y: auto;
     margin-top: 10px;
 }
 
-.Monster__repo-item {
+.Creature__repo-item {
     background-color: var(--item-background);
     padding: 10px;
     max-height: 40px;
@@ -86,14 +86,14 @@
     margin: 10px;
 }
 
-.Monster__repo-item a {
+.Creature__repo-item a {
     color: var(--color-font);
 }
 
-.Monster__repo-item:first-child {
+.Creature__repo-item:first-child {
     margin-top: 0;
 }
 
-.Monster__repo-item:last-child {
+.Creature__repo-item:last-child {
     margin-bottom: 0;
 }

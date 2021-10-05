@@ -62,7 +62,7 @@ function User () {
 
     const mapItems = (item, index) => {
         return (
-            <ListGroupItem className='Monster__repo-item'>
+            <ListGroupItem className='Creature__repo-item'>
                 <a href={item.html_url} target='_blank' rel='noreferrer'>
                     <div className='repo-item__data'>
                         <span>
@@ -78,9 +78,9 @@ function User () {
 
     return (
         <div className='page--content'>
-            <div className='Monster'>
-                <div className='Monster__user-data'>
-                    <div className='monster-data'>
+            <div className='Creature'>
+                <div className='Creature__user-data'>
+                    <div className='creature-data'>
                         <img
                             className='avatar'
                             src={user.avatar_url}
@@ -102,7 +102,7 @@ function User () {
                             Created At:{' '}
                             {new Date(user.created_at).toLocaleDateString()}
                         </span>
-                        <ListGroup className='Monster__repos-list'>
+                        <ListGroup className='Creature__repos-list'>
                             {listedItems}
                             <div style={{ height: '1px' }} ref={ref} />
                         </ListGroup>

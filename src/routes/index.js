@@ -8,7 +8,7 @@ export const routes = [
         exact: true,
     },
     {
-        path: 'monster',
+        path: 'creature',
         component: User,
         exact: true,
     },
