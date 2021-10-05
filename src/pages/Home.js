@@ -9,6 +9,12 @@ import './styles/Home.css'
 function Home () {
     const [data, setData] = useState([])
 
+    useEffect(() => {
+        const getData = async () => {
+            setData(await api.getCreatures())
+        }
+    }, [])
+
     const mapItems = (item, index) => {
         return (
             <Link
