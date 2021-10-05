@@ -30,7 +30,7 @@ api.getUsers = async (since, setLastPage) => {
 
 api.getCreatures = async () => {
     return new Promise(async (resolve, reject) => {
-        api.get('/monsters')
+        api.get('/creatures')
             .then(response => {
                 if (response.status === 200) resolve(response.data)
                 else reject(response.statusText)
