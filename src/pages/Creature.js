@@ -32,7 +32,7 @@ function Creature () {
                     'Creature added',
                     'The creature has been added succesfully.',
                     'success'
-                ).then(value => window.history.push('/'))
+                ).then(value => (window.location.href = '/'))
             } else {
                 Swal.fire(
                     'Something went wrong',
