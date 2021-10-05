@@ -25,19 +25,28 @@ function Creature () {
 
     const submitData = async e => {
         e.preventDefault()
-        const addedCreature = await api.addCreature(creature)
-        if (addedCreature.id) {
-            Swal.fire(
-                'Creature added',
-                'The creature has been added succesfully.',
-                'success'
-            ).then(value => window.history.push('/'))
-        } else
+        try {
+            const addedCreature = await api.addCreature(creature)
+            if (addedCreature.id) {
+                Swal.fire(
+                    'Creature added',
+                    'The creature has been added succesfully.',
+                    'success'
+                ).then(value => window.history.push('/'))
+            } else {
+                Swal.fire(
+                    'Something went wrong',
+                    'The creature could not be added.',
+                    'error'
+                )
+            }
+        } catch (e) {
             Swal.fire(
                 'Something went wrong',
                 'The creature could not be added.',
                 'error'
             )
+        }
     }
 
     return (
