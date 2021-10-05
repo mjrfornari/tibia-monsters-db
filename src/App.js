@@ -52,7 +52,7 @@ function App () {
                     </a>
                     {' & '}
                     <a
-                        href='https://github.com/mjrfornari'
+                        href='https://github.com/ulyssesmtr'
                         target='_blank'
                         rel='noreferrer'
                     >

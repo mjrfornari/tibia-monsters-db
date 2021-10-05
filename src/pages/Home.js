@@ -13,7 +13,7 @@ function Home () {
 
     useEffect(() => {
         const getData = async () => {
-            setData(await api.getCreatures())
+            // setData(await api.getCreatures())
             axios.get('https://api.chucknorris.io/jokes/random').then(res => {
                 setRandomJoke(res.data.value)
             })
@@ -53,7 +53,7 @@ function Home () {
     return (
         <div className='page--content'>
             <div className='Home'>
-                {randomJoke}
+                <div className='random-joke'>{randomJoke}</div>
                 <h2>Creatures</h2>
                 <div className='Home__users-list'>
                     <ListGroup>{listedItems}</ListGroup>
