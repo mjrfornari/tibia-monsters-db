@@ -17,7 +17,7 @@ api.getCreatures = async () => {
 
 api.getCreature = async id => {
     return new Promise(async (resolve, reject) => {
-        api.get('/creatures/' + id)
+        api.get('/creature/' + id)
             .then(response => {
                 if (response.status === 200) resolve(response.data)
                 else reject(response.statusText)
