@@ -15,15 +15,26 @@ function Creature () {
         const fetchData = async () => {
             const query = new URLSearchParams(window.location.search)
             if (query.get('id')) {
-                let editCreature = await api.getCreature(query.get('id'))
-                console.log(editCreature)
-                setCreature(editCreature)
-            } else
-                Swal.fire(
-                    'Something went wrong',
-                    'The creature could not be found.',
-                    'error'
-                ).then(value => (window.location.href = '/'))
+                try {
+                    let editCreature = await api.getCreature(query.get('id'))
+                    if (editCreature) {
+                        console.log(editCreature)
+                        setCreature(editCreature)
+                    } else {
+                        Swal.fire(
+                            'Something went wrong',
+                            'The creature could not be found.',
+                            'error'
+                        ).then(value => (window.location.href = '/'))
+                    }
+                } catch (e) {
+                    Swal.fire(
+                        'Something went wrong',
+                        'The creature could not be found.',
+                        'error'
+                    ).then(value => (window.location.href = '/'))
+                }
+            }
         }
 
         fetchData()
@@ -113,19 +124,32 @@ function Creature () {
                         <span
                             style={{
                                 display: creature.id ? 'block' : 'none',
+                                marginBottom: creature.id ? '20px' : '0',
                             }}
                         >
                             Id: {creature.id}
                         </span>
 
                         <span>Name:</span>
-                        <input name='name' onChange={handleChange} />
+                        <input
+                            name='name'
+                            onChange={handleChange}
+                            value={creature.name}
+                        />
 
                         <span>Life:</span>
-                        <input name='life' onChange={handleChange} />
+                        <input
+                            name='life'
+                            onChange={handleChange}
+                            value={creature.life}
+                        />
 
                         <span>Experience:</span>
-                        <input name='exp' onChange={handleChange} />
+                        <input
+                            name='exp'
+                            onChange={handleChange}
+                            value={creature.exp}
+                        />
 
                         <div className='Creature__button-container'>
                             <button

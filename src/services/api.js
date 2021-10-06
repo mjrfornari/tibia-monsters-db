@@ -17,6 +17,12 @@ api.getCreatures = async () => {
 
 api.getCreature = async id => {
     return new Promise(async (resolve, reject) => {
+        return resolve({
+            id: '1',
+            name: 'Demon',
+            exp: 6000,
+            life: 6000,
+        })
         api.get('/creature/' + id)
             .then(response => {
                 if (response.status === 200) resolve(response.data)
