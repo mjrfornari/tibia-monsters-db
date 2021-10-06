@@ -62,18 +62,10 @@ api.updateCreature = async (login, page, setLastPage) => {
     })
 }
 
-api.deleteCreature = async (login, page, setLastPage) => {
+api.deleteCreature = async id => {
     return new Promise(async (resolve, reject) => {
-        return resolve({
-            id: 1,
-            name: 'Demon',
-            life: 8200,
-            exp: 6000,
-        })
-        api.get('/users/' + login + '/repos', { params: { page } })
+        api.get('/creature/' + id)
             .then(response => {
-                if (response?.headers?.link?.indexOf('next') === -1)
-                    setLastPage(true)
                 if (response.status === 200) resolve(response.data)
                 else reject(response.statusText)
             })
