@@ -64,7 +64,7 @@ api.updateCreature = async (login, page, setLastPage) => {
 
 api.deleteCreature = async id => {
     return new Promise(async (resolve, reject) => {
-        api.get('/creature/' + id)
+        api.delete('/creature/' + id)
             .then(response => {
                 if (response.status === 200) resolve(response.data)
                 else reject(response.statusText)
