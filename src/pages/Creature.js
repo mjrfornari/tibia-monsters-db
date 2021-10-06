@@ -15,7 +15,9 @@ function Creature () {
         const fetchData = async () => {
             const query = new URLSearchParams(window.location.search)
             if (query.get('id')) {
-                setCreature(await api.getCreature(query.get('id')))
+                let editCreature = await api.getCreature(query.get('id'))
+                console.log(editCreature)
+                setCreature(editCreature)
             } else
                 Swal.fire(
                     'Something went wrong',
