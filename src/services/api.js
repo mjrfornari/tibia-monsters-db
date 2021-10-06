@@ -17,12 +17,6 @@ api.getCreatures = async () => {
 
 api.getCreature = async id => {
     return new Promise(async (resolve, reject) => {
-        return resolve({
-            id: 1,
-            name: 'Demon',
-            life: 8200,
-            exp: 6000,
-        })
         api.get('/creatures/' + id)
             .then(response => {
                 if (response.status === 200) resolve(response.data)
@@ -43,18 +37,10 @@ api.addCreature = async creature => {
     })
 }
 
-api.updateCreature = async (login, page, setLastPage) => {
+api.updateCreature = async (id, creature) => {
     return new Promise(async (resolve, reject) => {
-        return resolve({
-            id: 1,
-            name: 'Demon',
-            life: 8200,
-            exp: 6000,
-        })
-        api.get('/users/' + login + '/repos', { params: { page } })
+        api.put('/creature/' + id, creature)
             .then(response => {
-                if (response?.headers?.link?.indexOf('next') === -1)
-                    setLastPage(true)
                 if (response.status === 200) resolve(response.data)
                 else reject(response.statusText)
             })

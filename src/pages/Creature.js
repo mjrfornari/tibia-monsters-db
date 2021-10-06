@@ -11,6 +11,22 @@ import './styles/Creature.css'
 function Creature () {
     const [creature, setCreature] = useState({})
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const query = new URLSearchParams(window.location.search)
+            if (query.get('id')) {
+                setCreature(await api.getCreature(query.get('id')))
+            } else
+                Swal.fire(
+                    'Something went wrong',
+                    'The creature could not be found.',
+                    'error'
+                ).then(value => (window.location.href = '/'))
+        }
+
+        fetchData()
+    }, [])
+
     const handleBack = e => {
         e.preventDefault()
         window.history.back()
@@ -25,27 +41,56 @@ function Creature () {
 
     const submitData = async e => {
         e.preventDefault()
-        try {
-            const addedCreature = await api.addCreature(creature)
-            if (addedCreature.id) {
+        const query = new URLSearchParams(window.location.search)
+        if (query.get('id')) {
+            try {
+                const updatedCreature = await api.updateCreature(
+                    query.get('id'),
+                    creature
+                )
+                if (updatedCreature.id) {
+                    Swal.fire(
+                        'Creature updated',
+                        'The creature has been updated succesfully.',
+                        'success'
+                    ).then(value => (window.location.href = '/'))
+                } else {
+                    Swal.fire(
+                        'Something went wrong',
+                        'The creature could not be updated.',
+                        'error'
+                    )
+                }
+            } catch (e) {
                 Swal.fire(
-                    'Creature added',
-                    'The creature has been added succesfully.',
-                    'success'
-                ).then(value => (window.location.href = '/'))
-            } else {
+                    'Something went wrong',
+                    'The creature could not be updated.',
+                    'error'
+                )
+            }
+        } else {
+            try {
+                const addedCreature = await api.addCreature(creature)
+                if (addedCreature.id) {
+                    Swal.fire(
+                        'Creature added',
+                        'The creature has been added succesfully.',
+                        'success'
+                    ).then(value => (window.location.href = '/'))
+                } else {
+                    Swal.fire(
+                        'Something went wrong',
+                        'The creature could not be added.',
+                        'error'
+                    )
+                }
+            } catch (e) {
                 Swal.fire(
                     'Something went wrong',
                     'The creature could not be added.',
                     'error'
                 )
             }
-        } catch (e) {
-            Swal.fire(
-                'Something went wrong',
-                'The creature could not be added.',
-                'error'
-            )
         }
     }
 

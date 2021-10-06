@@ -14,7 +14,6 @@ import './styles/Home.css'
 
 function Home () {
     const [data, setData] = useState([])
-    const [randomJoke, setRandomJoke] = useState('')
 
     const getData = async () => {
         setData(await api.getCreatures())
@@ -78,16 +77,25 @@ function Home () {
                     <span>{item.name}</span>
                 </div>
                 <div className='creature-item__actions'>
-                    <button>
-                        <Icon
-                            style={{
-                                marginTop: '-1px',
-                            }}
-                            size={12}
-                            icon={pencil}
-                        />{' '}
-                        Edit
-                    </button>
+                    <Link
+                        to={{
+                            pathname: '/creature',
+                            search: '?id=' + item.id,
+                        }}
+                        className='Home__link'
+                        key={item.id}
+                    >
+                        <button>
+                            <Icon
+                                style={{
+                                    marginTop: '-1px',
+                                }}
+                                size={12}
+                                icon={pencil}
+                            />{' '}
+                            Edit
+                        </button>
+                    </Link>
                     <button id={item.id} onClick={deleteData}>
                         <Icon
                             style={{
