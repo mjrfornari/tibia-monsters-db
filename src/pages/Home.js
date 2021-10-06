@@ -36,10 +36,8 @@ function Home () {
                     const deletedCreature = await api.deleteCreature(
                         e.target.id
                     )
-                    if (
-                        deletedCreature.id &&
-                        deletedCreature.id === e.target.id
-                    ) {
+                    console.log(deletedCreature)
+                    if (deletedCreature.id) {
                         Swal.fire(
                             'Creature deleted',
                             'The creature has been deleted succesfully.',
